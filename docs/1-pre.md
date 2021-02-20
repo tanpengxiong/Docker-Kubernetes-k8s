@@ -119,6 +119,15 @@ $ ufw disable
 #查看状态
 $ ufw status
 ```
+centos
+```bash
+$ service iptables stop
+$ chkconfig iptables off
+$ vi /etc/selinux/config
+SELINUX=disabled
+
+```
+
 #### 3.2 设置系统参数 - 允许路由转发，不对bridge的数据进行处理
 ```bash
 #写入配置文件
