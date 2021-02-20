@@ -8,6 +8,15 @@
 | ubuntu16.04 | 192.168.1.102 | master |   1    | 2G | server02 |
 | ubuntu16.04 | 192.168.1.103 | worker |   1    | 2G | server03 |
 
+
+centos7
+
+| 系统类型 | IP地址 | 节点角色 | CPU | Memory | Hostname |
+| :------: | :--------: | :-------: | :-----: | :---------: | :-----: |
+| centos7 | 192.168.1.101 | worker |   1    | 2G | server01 |
+| centos7 | 192.168.1.102 | master |   1    | 2G | server02 |
+| centos7 | 192.168.1.103 | worker |   1    | 2G | server03 |
+
 > 使用centos的同学也可以参考此文档，需要注意替换系统命令即可
 
 ## 2. 安装docker（所有节点）
@@ -62,6 +71,44 @@ $ systemctl daemon-reload
 $ service docker restart
 ```
   
+#### 2.5 Centos
+- 使用 root 权限登录 Centos。确保 yum 包更新到最新
+```bash
+$ sudo yum update
+```
+- 卸载旧版本
+```bash
+$ sudo yum remove docker  docker-common docker-selinux docker-engine
+```
+- 安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的
+```bash
+$ sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+```
+
+- 设置yum源
+```bash
+$ sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+```
+- 可以查看所有仓库中所有docker版本，并选择特定版本安装
+```bash
+$ yum list docker-ce --showduplicates | sort -r
+```
+- 安装docker
+```bash
+$ sudo yum install docker-ce
+```
+- 启动并加入开机启动
+```bash
+$ sudo systemctl start docker
+$ sudo systemctl enable docker
+```
+
+- 验证安装是否成功(有client和service两部分表示docker安装启动都成功了)
+```bash
+$ docker version
+
+```
+
 
 遇到问题可以参考：[官方教程][1]
 
