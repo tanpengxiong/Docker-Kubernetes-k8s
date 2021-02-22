@@ -125,7 +125,15 @@ $ service iptables stop
 $ chkconfig iptables off
 $ vi /etc/selinux/config
 SELINUX=disabled
+```
 
+```bash
+systemctl stop firewalld
+systemctl disable firewalld
+# 临时关闭
+setenforce 0
+# 永久关闭，改为 SELINUX=disabled
+vi /etc/sysconfig/selinux
 ```
 
 #### 3.2 设置系统参数 - 允许路由转发，不对bridge的数据进行处理
@@ -140,6 +148,28 @@ EOF
 #生效配置文件
 $ sysctl -p /etc/sysctl.d/k8s.conf
 ```
+
+
+centos
+```bash
+# 创建文件
+vi /etc/sysctl.d/k8s.conf
+# 内容如下
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward = 1
+vm.swappiness = 0
+#执行文件；
+sysctl -p /etc/sysctl.d/k8s.conf
+# 可能出现的问题：
+sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-ip6tables: No such file or directory
+sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-iptables: No such file or directory
+#解决办法：
+modprobe br_netfilter
+ls /proc/sys/net/bridge
+sysctl -p /etc/sysctl.d/k8s.conf #这时再次执行sysctl -p命令即可
+```
+
 
 #### 3.3 配置host文件
 ```bash
