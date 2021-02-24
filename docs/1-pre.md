@@ -13,9 +13,9 @@ centos7
 
 | 系统类型 | IP地址 | 节点角色 | CPU | Memory | Hostname |
 | :------: | :--------: | :-------: | :-----: | :---------: | :-----: |
-| centos7 | 192.168.1.101 | worker |   1    | 2G | server01 |
-| centos7 | 192.168.1.102 | master |   1    | 2G | server02 |
-| centos7 | 192.168.1.103 | worker |   1    | 2G | server03 |
+| centos7 | 10.76.68.182 | worker |   1    | 2G | server01 |
+| centos7 | 10.76.68.179 | master |   1    | 2G | server02 |
+| centos7 | 10.76.68.178 | worker |   1    | 2G | server03 |
 
 > 使用centos的同学也可以参考此文档，需要注意替换系统命令即可
 
@@ -183,9 +183,9 @@ $ vi /etc/hosts
 
 centos:
 ```bash
-192.168.117.130 server01
-192.168.117.131 server02
-192.168.117.132 server03
+10.76.68.182 server01
+10.76.68.179 server02
+10.76.68.178 server03
 ```
 
 ## 4. 准备二进制文件（所有节点）
