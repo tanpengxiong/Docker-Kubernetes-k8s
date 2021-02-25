@@ -202,6 +202,8 @@ kubernetes的安装有几种方式，不管是kube-admin还是社区贡献的部
 从上面的三种方式中其实使用镜像是比较优雅的方案，容器的好处自然不用多说。但从初学者的角度来说容器的方案会显得有些复杂，不那么纯粹，会有很多容器的配置文件以及关于类似二进制文件提供的服务如何在容器中提供的问题，容易跑偏。
 所以我们这里使用二进制的方式来部署。二进制文件已经这里备好，大家可以打包下载，把下载好的文件放到每个节点上，放在哪个目录随你喜欢，**放好后最好设置一下环境变量$PATH**，方便后面可以直接使用命令。(科学上网的同学也可以自己去官网找找)  
 ####[下载地址（kubernetes 1.9.0版本）][2] 
+####[1台Kubernetes Master节点和4台Minion节点][3] 
+
 
 ## 5. 准备配置文件（所有节点）
 上一步我们下载了kubernetes各个组件的二进制文件，这些可执行文件的运行也是需要添加很多参数的，包括有的还会依赖一些配置文件。现在我们就把运行它们需要的参数和配置文件都准备好。
@@ -261,3 +263,5 @@ target/services/kube-dns.yaml
 
 [1]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
 [2]: https://pan.baidu.com/s/1bMnqWY
+[3]: https://github.com/tanpengxiong/Docker-Kubernetes-k8s-/tree/master/docs/5-minion.md
+
