@@ -1,4 +1,5 @@
 # k8s入门系列之集群安装
+[参考文章][1]
 ## 1. Kubernetes集群组件:
 ```bash
     - etcd 一个高可用的K/V键值对存储和服务发现系统
@@ -111,6 +112,6 @@ NAME            STATUS    AGE
 
 ```
 
-
+[1]: https://www.cnblogs.com/xkops/p/6169034.html
 
 
