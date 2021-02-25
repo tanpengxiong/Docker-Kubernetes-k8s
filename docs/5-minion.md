@@ -1,6 +1,6 @@
 # k8s入门系列之集群安装
 ## 1. Kubernetes集群组件:
-
+```bash
     - etcd 一个高可用的K/V键值对存储和服务发现系统
 　　- flannel 实现夸主机的容器网络的通信
 　　- kube-apiserver 提供kubernetes集群的API调用
@@ -9,13 +9,13 @@
 　　- kubelet 在Node节点上按照配置文件中定义的容器规格启动容器
 　　- kube-proxy 提供网络代理服务
 
-
+```
 
 
 ## 2. 集群示意图
 Kubernetes工作模式server-client，Kubenetes Master提供集中化管理Minions。部署1台Kubernetes Master节点和4台Minion节点
 
-```
+
 
 
 ## 3. 操作
